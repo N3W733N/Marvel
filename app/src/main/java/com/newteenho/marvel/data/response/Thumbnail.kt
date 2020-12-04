@@ -7,6 +7,6 @@ import com.squareup.moshi.JsonClass
 data class Thumbnail(
     @Json(name = "path")
     val path: String,
-    @Json(name = "id")
+    @Json(name = "extension")
     val extension: String
 )
