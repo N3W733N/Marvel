@@ -23,8 +23,8 @@ class CharactersViewModel : ViewModel() {
             service.getCharacters().enqueue(object : Callback<InfoInit> {
                 override fun onResponse(
                     call: Call<InfoInit>,
-                    response: Response<InfoInit>) {
-
+                    response: Response<InfoInit>
+                ) {
                     if (response.isSuccessful) {
                         response.body()?.let {
                             infoInitMutableLiveData.value = it
@@ -35,6 +35,49 @@ class CharactersViewModel : ViewModel() {
                     Log.e("onFailure", t.message.toString())
                 }
             })
+        }
+    }
+
+    fun getCharactersByID(characterId: String) {
+        ApiService.run {
+            service.getCharactersByID(characterId.toInt())
+                .enqueue(object : Callback<InfoInit> {
+                    override fun onResponse(
+                        call: Call<InfoInit>,
+                        response: Response<InfoInit>
+                    ) {
+                        if (response.isSuccessful) {
+                            response.body()?.let {
+                                infoInitMutableLiveData.value = it
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<InfoInit>, t: Throwable) {
+                        Log.e("onFailure", t.message.toString())
+                    }
+                })
+        }
+    }
+    fun getCharactersByName(characterName: String) {
+        ApiService.run {
+            service.getCharactersbyName(characterName)
+                .enqueue(object : Callback<InfoInit> {
+                    override fun onResponse(
+                        call: Call<InfoInit>,
+                        response: Response<InfoInit>
+                    ) {
+                        if (response.isSuccessful) {
+                            response.body()?.let {
+                                infoInitMutableLiveData.value = it
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<InfoInit>, t: Throwable) {
+                        Log.e("onFailure", t.message.toString())
+                    }
+                })
         }
     }
 }
