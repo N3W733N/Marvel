@@ -31,6 +31,7 @@ class CharactersViewModel : ViewModel() {
                         }
                     }
                 }
+
                 override fun onFailure(call: Call<InfoInit>, t: Throwable) {
                     Log.e("onFailure", t.message.toString())
                 }
@@ -59,6 +60,7 @@ class CharactersViewModel : ViewModel() {
                 })
         }
     }
+
     fun getCharactersByName(characterName: String) {
         ApiService.run {
             service.getCharactersbyName(characterName)

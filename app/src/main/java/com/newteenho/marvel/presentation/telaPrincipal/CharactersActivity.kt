@@ -1,10 +1,9 @@
 package com.newteenho.marvel.presentation.telaPrincipal
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SearchView
-import android.widget.Toolbar
+import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,31 +30,29 @@ class CharactersActivity : AppCompatActivity() {
                 }
             }
         })
-
         viewModel.getCharacters()
 
         searchHeader.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-
-                viewModel.getCharactersByID(query)
+                if (query.isDigitsOnly()) {
+                    viewModel.getCharactersByID(query)
+                } else viewModel.getCharactersByName(query)
                 return false
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
                 if (newText != "") {
-                    viewModel.getCharactersByID(newText)
-                } else
-                    viewModel.getCharacters()
+                    if (newText.isDigitsOnly()) {
+                        viewModel.getCharactersByID(newText)
+                    } else viewModel.getCharactersByName(newText)
+                } else viewModel.getCharacters()
                 return false
             }
         })
 
-        searchHeader.setOnCloseListener(object : SearchView.OnCloseListener {
-            override fun onClose(): Boolean {
-                viewModel.getCharacters()
-                return false
-            }
-
-        })
+        searchHeader.setOnCloseListener {
+            viewModel.getCharacters()
+            false
+        }
     }
 }
