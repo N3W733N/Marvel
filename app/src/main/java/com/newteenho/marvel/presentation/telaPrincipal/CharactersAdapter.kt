@@ -11,7 +11,9 @@ import com.newteenho.marvel.data.response.Results
 import kotlinx.android.synthetic.main.character_item.view.*
 
 class CharactersAdapter(
-     val charactersMae: InfoInit
+    val charactersMae: InfoInit,
+    val onItemClickListener: ((hero: Results) -> Unit)
+
 ) : RecyclerView.Adapter<CharactersAdapter.CharactersViewHolder>() {
     private val characters = charactersMae.data.results
 
@@ -19,26 +21,27 @@ class CharactersAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharactersViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.character_item, parent, false)
-        return CharactersViewHolder(itemView)
+        return CharactersViewHolder(itemView, onItemClickListener)
     }
 
     override fun getItemCount() = characters.size
 
     override fun onBindViewHolder(holder: CharactersViewHolder, position: Int) {
-        holder.bindView(characters[position],charactersMae)
+        holder.bindView(characters[position], charactersMae)
     }
 
 
-    class CharactersViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class CharactersViewHolder(itemView: View, val onItemClickListener: (hero: Results) -> Unit) :
+        RecyclerView.ViewHolder(itemView) {
 
         private val heroName = itemView.nameHeroTxt
         private val heroSprite = itemView.thumbHero
         private val heroId = itemView.idHeroTxt
         private val heroAttibution = itemView.attributionTxt
 
-        fun bindView(character: Results,charactersMae: InfoInit) {
+        fun bindView(character: Results, charactersMae: InfoInit) {
             heroName.text = character.name
-            heroId.text =  "ID: ${character.id}"
+            heroId.text = "ID: ${character.id}"
             heroAttibution.text = charactersMae.attributionText
 
             val img =
@@ -46,6 +49,9 @@ class CharactersAdapter(
                     ":"
                 )
             Glide.with(itemView).load("https:" + img[1]).into(heroSprite)
+            itemView.setOnClickListener {
+                onItemClickListener.invoke(character)
+            }
         }
     }
 

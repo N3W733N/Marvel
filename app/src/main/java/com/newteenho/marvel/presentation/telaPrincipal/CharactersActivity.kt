@@ -2,6 +2,7 @@ package com.newteenho.marvel.presentation.telaPrincipal
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.SearchView
 import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.Observer
@@ -9,7 +10,9 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.newteenho.marvel.R
+import com.newteenho.marvel.presentation.telaDetails.DetailsActivity
 import kotlinx.android.synthetic.main.activity_characters.*
+import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.character_item.*
 
 class CharactersActivity : AppCompatActivity() {
@@ -26,7 +29,13 @@ class CharactersActivity : AppCompatActivity() {
                     layoutManager =
                         LinearLayoutManager(this@CharactersActivity, RecyclerView.VERTICAL, false)
                     setHasFixedSize(true)
-                    adapter = CharactersAdapter(characters)
+                    adapter = CharactersAdapter(characters){
+                        val intent = DetailsActivity.getStartIntent(
+                            this@CharactersActivity,
+                            it.id
+                        )
+                        this@CharactersActivity.startActivity(intent)
+                    }
                 }
             }
         })
@@ -54,5 +63,6 @@ class CharactersActivity : AppCompatActivity() {
             viewModel.getCharacters()
             false
         }
+
     }
 }
