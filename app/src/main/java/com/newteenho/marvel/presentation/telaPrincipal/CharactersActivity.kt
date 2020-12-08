@@ -2,7 +2,6 @@ package com.newteenho.marvel.presentation.telaPrincipal
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.SearchView
 import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.Observer
@@ -23,13 +22,16 @@ class CharactersActivity : AppCompatActivity() {
         val viewModel: CharactersViewModel =
             ViewModelProviders.of(this).get(CharactersViewModel::class.java)
 
+        searchFunction(viewModel)
+        viewModel.getCharacters()
+
         viewModel.infoInitLiveData.observe(this, Observer {
             it?.let { characters ->
                 with(recyclerHeroes) {
                     layoutManager =
                         LinearLayoutManager(this@CharactersActivity, RecyclerView.VERTICAL, false)
                     setHasFixedSize(true)
-                    adapter = CharactersAdapter(characters){
+                    adapter = CharactersAdapter(characters) {
                         val intent = DetailsActivity.getStartIntent(
                             this@CharactersActivity,
                             it.id
@@ -39,8 +41,14 @@ class CharactersActivity : AppCompatActivity() {
                 }
             }
         })
-        viewModel.getCharacters()
 
+        searchHeader.setOnCloseListener {
+            viewModel.getCharacters()
+            false
+        }
+    }
+
+    private fun searchFunction(viewModel: CharactersViewModel) {
         searchHeader.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 if (query.isDigitsOnly()) {
@@ -58,11 +66,5 @@ class CharactersActivity : AppCompatActivity() {
                 return false
             }
         })
-
-        searchHeader.setOnCloseListener {
-            viewModel.getCharacters()
-            false
-        }
-
     }
 }

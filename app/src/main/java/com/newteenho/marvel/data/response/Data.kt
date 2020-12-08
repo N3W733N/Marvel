@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Data (
+data class Data(
     @Json(name = "results")
-    val results:List<Results>
+    val results: List<Results>
 )

@@ -12,7 +12,7 @@ import retrofit2.http.Query
 
 
 interface Endpoint {
-    @GET("characters")
+    @GET("v1/public/characters")
     fun getCharacters(
         @Query("limit") limit: Int = 100,
         @Query("ts") ts: String = TS,
@@ -20,7 +20,7 @@ interface Endpoint {
         @Query("hash") hash: String = HASH.md5()
     ): Call<InfoInit>
 
-    @GET("characters/{characterId}")
+    @GET("v1/public/characters/{characterId}")
     fun getCharactersByID(
         @Path("characterId") characterID: Int,
         @Query("limit") limit: Int = 100,
@@ -30,7 +30,7 @@ interface Endpoint {
 
     ): Call<InfoInit>
 
-    @GET("characters")
+    @GET("v1/public/characters")
     fun getCharactersbyName(
         @Query("nameStartsWith") name: String,
         @Query("limit") limit: Int = 100,

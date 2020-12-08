@@ -6,14 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.newteenho.marvel.data.network.ApiService
 import com.newteenho.marvel.data.response.InfoInit
-import com.newteenho.marvel.data.response.Results
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class CharactersViewModel : ViewModel() {
-    val charactersMutableLiveData = MutableLiveData<List<Results>>()
-    val charactersLiveData: LiveData<List<Results>> = charactersMutableLiveData
     val infoInitMutableLiveData = MutableLiveData<InfoInit>()
     val infoInitLiveData: LiveData<InfoInit> = infoInitMutableLiveData
 

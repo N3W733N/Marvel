@@ -10,7 +10,7 @@
     <View
         android:id="@+id/viewHeader"
         android:layout_width="wrap_content"
-        android:layout_height="120dp"
+        android:layout_height="@dimen/default_size_120_dp"
         android:background="@color/backDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,24 +18,12 @@
 
     <ImageView
         android:id="@+id/txtTitleHeader"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="@dimen/default_size_150_dp"
+        android:layout_height="@dimen/default_size_50_dp"
+        android:layout_marginTop="@dimen/default_size_24_dp"
         android:src="@drawable/marvel_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <Button
-        android:id="@+id/infoButtonHeader"
-        android:layout_width="@dimen/default_size_24_dp"
-        android:layout_height="@dimen/default_size_24_dp"
-        android:layout_marginTop="@dimen/default_size_11_dp"
-        android:layout_marginEnd="@dimen/default_size_16_dp"
-        android:background="@drawable/ic_help_outline"
-        android:importantForAccessibility="yes"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <SearchView
@@ -43,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_size_36_dp"
         android:layout_marginStart="@dimen/default_size_16_dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/default_size_8_dp"
         android:layout_marginEnd="@dimen/default_size_16_dp"
         android:background="@drawable/background_search_button"
         android:focusable="true"
@@ -52,7 +40,7 @@
         android:importantForAccessibility="yes"
         android:orientation="horizontal"
         android:queryBackground="@android:color/transparent"
-        android:queryHint="Search"
+        android:queryHint="@string/search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,8 +49,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerHeroes"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/default_size_0_dp"
+        android:layout_height="@dimen/default_size_0_dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

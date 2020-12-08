@@ -24,28 +24,6 @@ class DetailsActivity : AppCompatActivity() {
         setCharacterData(detailViewModel)
     }
 
-
-    private fun setCharacterData(detailViewModel: DetailsViewModel) {
-        detailViewModel.heroesLiveData.observe(this, Observer {
-            heroDescription.movementMethod = ScrollingMovementMethod()
-            heroTitle.text = it.name
-            if (it.description != "") {
-                heroDescription.text = it.description
-            } else {
-                heroDescription.text = "No description founded"
-                heroDescription.textSize = 30F
-            }
-
-            val img = "${it.thumbnail.path}/standard_amazing.${it.thumbnail.extension}"
-                .split(":")
-            Glide.with(this).load("https:" + img[1]).into(thumbHero)
-        })
-        backButton.setOnClickListener{
-            motionLayout.transitionToStart()
-            finishAfterTransition()
-        }
-    }
-
     companion object {
         fun getStartIntent(
             context: Context, charID: String
@@ -59,4 +37,23 @@ class DetailsActivity : AppCompatActivity() {
         }
     }
 
+    private fun setCharacterData(detailViewModel: DetailsViewModel) {
+        detailViewModel.heroesLiveData.observe(this, Observer {
+            heroDescription.movementMethod = ScrollingMovementMethod()
+            heroTitle.text = it.name
+            if (it.description != "") {
+                heroDescription.text = it.description
+            } else {
+                heroDescription.text = "No description founded"
+                heroDescription.textSize = 30F
+            }
+            val img = "${it.thumbnail.path}/standard_amazing.${it.thumbnail.extension}"
+                .split(":")
+            Glide.with(this).load("https:" + img[1]).into(thumbHero)
+        })
+        backButton.setOnClickListener {
+            motionLayout.transitionToStart()
+            finishAfterTransition()
+        }
+    }
 }

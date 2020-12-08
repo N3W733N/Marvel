@@ -25,9 +25,9 @@
             motion:layout_constraintStart_toStartOf="parent" />
         <Constraint
             android:id="@+id/thumbHero"
-            android:layout_width="0dp"
-            android:layout_height="250dp"
-            android:layout_marginStart="8dp"
+            android:layout_width="@dimen/default_size_0_dp"
+            android:layout_height="@dimen/default_size_250_dp"
+            android:layout_marginStart="@dimen/default_size_8_dp"
             android:layout_marginEnd="8dp"
             android:alpha="0"
             android:visibility="invisible"
@@ -36,7 +36,7 @@
             motion:layout_constraintStart_toStartOf="parent" />
         <Constraint
             android:id="@+id/heroTitle"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/default_size_0_dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_size_16_dp"
             android:layout_marginEnd="@dimen/default_size_16_dp"
@@ -51,10 +51,10 @@
     <ConstraintSet android:id="@+id/end">
         <Constraint
             android:id="@+id/heroTitle"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/default_size_0_dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_size_16_dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/default_size_16_dp"
             android:layout_marginEnd="@dimen/default_size_16_dp"
             android:alpha="1"
             motion:layout_constraintEnd_toEndOf="parent"
@@ -65,8 +65,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_size_16_dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="@dimen/default_size_16_dp"
+            android:layout_marginEnd="@dimen/default_size_16_dp"
             android:alpha="1"
             android:visibility="visible"
             motion:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +75,7 @@
         <Constraint
             android:id="@+id/view"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/default_size_0_dp"
             motion:layout_constraintBottom_toBottomOf="@id/heroDescription"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintHorizontal_bias="0.0"
@@ -84,22 +84,22 @@
             motion:layout_constraintVertical_bias="1.0" />
         <Constraint
             android:id="@+id/thumbHero"
-            android:layout_width="0dp"
-            android:layout_height="250dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="@dimen/default_size_0_dp"
+            android:layout_height="@dimen/default_size_250_dp"
+            android:layout_marginStart="@dimen/default_size_8_dp"
+            android:layout_marginTop="@dimen/default_size_40_dp"
+            android:layout_marginEnd="@dimen/default_size_8_dp"
             android:alpha="1"
             android:elevation="@dimen/default_size_30_dp"
-            app:sriv_left_top_corner_radius="20dip"
+            app:sriv_left_top_corner_radius="@dimen/default_size_20_dp"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toTopOf="parent"></Constraint>
+            motion:layout_constraintTop_toTopOf="parent" />
         <Constraint
             android:id="@+id/backButton"
             android:layout_width="@dimen/default_size_24_dp"
             android:layout_height="@dimen/default_size_24_dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/default_size_16_dp"
             android:layout_marginTop="@dimen/default_size_10_dp"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
